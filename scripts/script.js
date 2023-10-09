@@ -42,9 +42,9 @@ $meuform.addEventListener("submit", async (e) => {
     if (response.status === 200) {
       const dados = await response.json();
 
-      const obj = {
+      // const obj = {
 
-      }
+      // }
 
       transacoes.push(dados);
       carregarTransacoes();
@@ -144,8 +144,8 @@ function carregarTransacoes() {
 
       editando = true;
       transacaoId = transacao.idtransacao;
-      valorNegativo();
     });
+    valorNegativo();
   });
   popularCards()
 }
@@ -153,6 +153,10 @@ function carregarTransacoes() {
 
 // CARREGAR CARDS
 function popularCards() {
+
+
+
+
   if (transacoes.length === 0) {
     document.querySelector('#proventos').innerHTML = 'R$ 0,00';
     document.querySelector('#gastos').innerHTML = 'R$ 0,00';
@@ -161,18 +165,20 @@ function popularCards() {
     fetch('http://127.0.0.1:5000/valores')
       .then(response => response.json())
       .then(corpo => {
-        const totalEntradasFormatado = parseFloat(corpo.total_entradas).toLocaleString('pt-BR', {
+        let totalEntradasFormatado = parseFloat(corpo.total_entradas).toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        });
+        let totalSaidaFormatado = parseFloat(corpo.total_saida).toLocaleString('pt-BR', {
           style: 'currency',
           currency: 'BRL'
         });
-        const totalSaidaFormatado = parseFloat(corpo.total_saida).toLocaleString('pt-BR', {
+        let saldoFormatado = parseFloat(corpo.saldo).toLocaleString('pt-BR', {
           style: 'currency',
-          currency: 'BRL'
+          currency: 'BRL',
+          currencyDisplay: 'symbol'
         });
-        const saldoFormatado = parseFloat(corpo.saldo).toLocaleString('pt-BR', {
-          style: 'currency',
-          currency: 'BRL'
-        });
+
 
         valorNegativo(corpo.saldo)
 
