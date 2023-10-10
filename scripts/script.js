@@ -39,16 +39,9 @@ $meuform.addEventListener("submit", async (e) => {
       }),
     });
 
-    if (response.status === 200) {
-      const dados = await response.json();
-
-      // const obj = {
-
-      // }
-
-      transacoes.push(dados);
-      carregarTransacoes();
-    }
+    const dados = await response.json();
+    transacoes.push(dados);
+    carregarTransacoes();
 
   } else {
     const response = await fetch(`http://127.0.0.1:5000/api/transacoes/${transacaoId}`, {
@@ -162,22 +155,21 @@ function popularCards() {
       .then(response => response.json())
       .then(corpo => {
         let totalEntradasFormatado = parseFloat(corpo.total_entradas).toLocaleString('pt-BR', {
-          style: 'currency',
-          currency: 'BRL',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
         });
         let totalSaidaFormatado = parseFloat(corpo.total_saida).toLocaleString('pt-BR', {
-          style: 'currency',
-          currency: 'BRL'
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
         });
         let saldoFormatado = parseFloat(corpo.saldo).toLocaleString('pt-br', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2
         })
 
-
         valorNegativo(corpo.saldo)
-        document.querySelector('#proventos').innerHTML = totalEntradasFormatado;
-        document.querySelector('#gastos').innerHTML = totalSaidaFormatado;
+        document.querySelector('#proventos').innerHTML = `R$ ${totalEntradasFormatado}`
+        document.querySelector('#gastos').innerHTML = `R$ ${totalSaidaFormatado}`;
         document.querySelector('#saldo').innerHTML = `R$ ${saldoFormatado}`
       })
   }
