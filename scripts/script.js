@@ -153,10 +153,6 @@ function carregarTransacoes() {
 
 // CARREGAR CARDS
 function popularCards() {
-
-
-
-
   if (transacoes.length === 0) {
     document.querySelector('#proventos').innerHTML = 'R$ 0,00';
     document.querySelector('#gastos').innerHTML = 'R$ 0,00';
@@ -173,18 +169,16 @@ function popularCards() {
           style: 'currency',
           currency: 'BRL'
         });
-        let saldoFormatado = parseFloat(corpo.saldo).toLocaleString('pt-BR', {
-          style: 'currency',
-          currency: 'BRL',
-          currencyDisplay: 'symbol'
-        });
+        let saldoFormatado = parseFloat(corpo.saldo).toLocaleString('pt-br', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        })
 
 
         valorNegativo(corpo.saldo)
-
         document.querySelector('#proventos').innerHTML = totalEntradasFormatado;
         document.querySelector('#gastos').innerHTML = totalSaidaFormatado;
-        document.querySelector('#saldo').innerHTML = saldoFormatado;
+        document.querySelector('#saldo').innerHTML = `R$ ${saldoFormatado}`
       })
   }
 
