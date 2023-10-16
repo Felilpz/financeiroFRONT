@@ -1,3 +1,7 @@
+//as transacoes precisam estar listadas pelas mais novas em questão de data
+//botar input date
+//tipar o data do banco de dados para date
+
 const $meuform = document.querySelector("#meu-form");
 
 let transacoes = [];
@@ -20,8 +24,8 @@ window.addEventListener("DOMContentLoaded", async () => {
 // PROJETO - CRIAR
 $meuform.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const descricao = $meuform["desc-name"].value
-  const valor = $meuform["valor-name"].value
+  const descricao = $meuform["desc-name"].value;
+  const valor = $meuform["valor-name"].value;
   const tipo = $meuform["radio-name"].value;
 
 
