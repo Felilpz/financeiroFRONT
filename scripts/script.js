@@ -1,6 +1,6 @@
-//as transacoes precisam estar listadas pelas mais novas em questão de data
 //botar input date
 //tipar o data do banco de dados para date
+//as transacoes precisam estar listadas pelas mais novas em questão de data
 
 const $meuform = document.querySelector("#meu-form");
 
@@ -39,7 +39,7 @@ $meuform.addEventListener("submit", async (e) => {
         descricao,
         valor,
         tipo,
-        dataFormatada
+        // dataFormatada
       }),
     });
 
@@ -57,7 +57,7 @@ $meuform.addEventListener("submit", async (e) => {
         descricao,
         valor,
         tipo,
-        dataFormatada
+        // dataFormatada
       }),
     });
 
