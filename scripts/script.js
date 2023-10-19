@@ -39,7 +39,7 @@ $meuform.addEventListener("submit", async (e) => {
         descricao,
         valor,
         tipo,
-        // dataFormatada
+        dataFormatada
       }),
     });
 
@@ -57,7 +57,7 @@ $meuform.addEventListener("submit", async (e) => {
         descricao,
         valor,
         tipo,
-        // dataFormatada
+        dataFormatada
       }),
     });
 
