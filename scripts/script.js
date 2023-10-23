@@ -29,6 +29,14 @@ $meuform.addEventListener("submit", async (e) => {
   const tipo = $meuform["radio-name"].value;
 
 
+  // function funcaoData() {
+  //   let data1 = document.querySelector('.data').value;
+  //   let data = data1.split('-').reverse().join('/');
+  //   return data;
+  // }
+
+  // let dataFormatada = funcaoData();
+
   if (!editando) {
     const response = await fetch("http://127.0.0.1:5000/api/transacoes", {
       method: "POST",
@@ -42,6 +50,7 @@ $meuform.addEventListener("submit", async (e) => {
         dataFormatada
       }),
     });
+    console.log(dataFormatada)
 
     const dados = await response.json();
     transacoes.push(dados);
