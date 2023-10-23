@@ -29,13 +29,13 @@ $meuform.addEventListener("submit", async (e) => {
   const tipo = $meuform["radio-name"].value;
 
 
-  // function funcaoData() {
-  //   let data1 = document.querySelector('.data').value;
-  //   let data = data1.split('-').reverse().join('/');
-  //   return data;
-  // }
+  function funcaoData() {
+    let data1 = document.querySelector('.data').value;
+    let data = data1.split('-').reverse().join('/');
+    return data;
+  }
 
-  // let dataFormatada = funcaoData();
+  let dataFormatada = funcaoData();
 
   if (!editando) {
     const response = await fetch("http://127.0.0.1:5000/api/transacoes", {
@@ -50,7 +50,7 @@ $meuform.addEventListener("submit", async (e) => {
         dataFormatada
       }),
     });
-    console.log(dataFormatada)
+    // console.log(dataFormatada)
 
     const dados = await response.json();
     transacoes.push(dados);
@@ -58,6 +58,7 @@ $meuform.addEventListener("submit", async (e) => {
 
   } else {
     const response = await fetch(`http://127.0.0.1:5000/api/transacoes/${transacaoId}`, {
+      // let valorData = response.data
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
