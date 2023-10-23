@@ -7,8 +7,10 @@ function formatarData(numero) {
 }
 
 function funcaoData() {
-    let data1 = document.querySelector('.data').value
-    let data = data1.split('-').reverse().join('/');
+    let data1 = document.querySelector('.data').value;
+    let partes = data1.split('-');
+    return formatarData(partes[2]) + '/' + formatarData(partes[1]) + '/' + partes[0];
 }
 
-let dataFormatada = funcaoData()
+let dataFormatada = funcaoData();
+console.log(dataFormatada);
