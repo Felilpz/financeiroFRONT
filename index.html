@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/style/style.css">
     <link rel="shortcut icon" href="/style/award-fill.svg" type="image/x-icon">
     <!-- JS -->
-    <script src="scripts/data.js" defer></script>
+    <!-- <script src="scripts/data.js" defer></script> -->
     <script src="scripts/script.js" defer></script>
     <script src="scripts/valornegativo.js" defer></script>
 
@@ -59,12 +59,13 @@
             <section>
                 <form class="formulario-container" id="meu-form">
                     <div class="label-float">
-                        <input type="text" name="desc-name" id="form-desc" placeholder="" required>
+                        <input type="text" name="desc-name" id="form-desc" placeholder="" required value="Miguelito">
                         <label for="form-desc">Descrição</label>
                     </div>
 
                     <div class="label-float">
-                        <input type="number" step="0.01" name="valor-name" id="form-valor" placeholder="" required>
+                        <input type="number" step="0.01" name="valor-name" id="form-valor" placeholder="" required
+                            value="300">
                         <label for="form-valor">Valor</label>
                     </div>
 
