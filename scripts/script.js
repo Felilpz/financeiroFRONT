@@ -1,6 +1,7 @@
 //botar input date
 //tipar o data do banco de dados para date
 //as transacoes precisam estar listadas pelas mais novas em questão de data
+//adicionar window.confirm no botao de deletar
 
 const $meuform = document.querySelector("#meu-form");
 
@@ -49,6 +50,7 @@ $meuform.addEventListener("submit", async (e) => {
         tipo,
         dataFormatada
       }),
+
     });
     // console.log(dataFormatada)
 
@@ -69,6 +71,7 @@ $meuform.addEventListener("submit", async (e) => {
         tipo,
         dataFormatada
       }),
+
     });
 
     const updateTransacao = await response.json();
@@ -114,18 +117,22 @@ function carregarTransacoes() {
     // deletar transacao
     const btnDelete = transacaoItem.querySelector(".btn-delete");
     btnDelete.addEventListener("click", async (e) => {
-      const response = await fetch(
-        `http://127.0.0.1:5000/api/transacoes/${transacao.idtransacao}`, {
-        method: "DELETE",
-      });
+      const windowDelete = window.confirm("Tem certeza que deseja excluir esta transação?");
 
-      const data = await response.json();
+      if (windowDelete) {
+        const response = await fetch(
+          `http://127.0.0.1:5000/api/transacoes/${transacao.idtransacao}`, {
+          method: "DELETE",
+        });
 
-      transacoes = transacoes.filter(
-        (transacao) => transacao.idtransacao !== data.idtransacao
-      );
-      carregarTransacoes();
-      valorNegativo();
+        const data = await response.json();
+
+        transacoes = transacoes.filter(
+          (transacao) => transacao.idtransacao !== data.idtransacao
+        );
+        carregarTransacoes();
+        valorNegativo();
+      }
     });
 
     transacoesLista.appendChild(transacaoItem);
@@ -142,6 +149,15 @@ function carregarTransacoes() {
       $meuform["valor-name"].value = data.valor;
       $meuform["radio-name"].value = data.tipo;
 
+
+      console.log(data.data);
+
+      const dataTransacaoInput = document.getElementById("dataInput");
+      const datinha = data.data.split('/').reverse().join('-');
+
+      dataTransacaoInput.value = datinha;
+
+
       let type = $meuform["radio-name"].value;
       if ($meuform["radio-name"].value == "Entrada") {
         document.querySelector("#entrada").checked = true;
@@ -152,6 +168,7 @@ function carregarTransacoes() {
       editando = true;
       transacaoId = transacao.idtransacao;
     });
+
     valorNegativo();
   });
   popularCards()
