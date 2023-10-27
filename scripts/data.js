@@ -18,3 +18,11 @@
 //     // console.log(data)
 // }
 // let dataFormatada = funcaoData()
+
+// function ordenar() {
+//     transacoes.sort((a, b) => {
+//         const dataA = new Date(b.data);
+//         const dataB = new Date(a.data);
+//         return dataB - dataA;
+//     });
+// }
