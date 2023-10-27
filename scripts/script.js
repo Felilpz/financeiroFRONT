@@ -1,7 +1,8 @@
-//botar input date
-//tipar o data do banco de dados para date
+//botar input date *
+//data precisa voltar pro input date *
+//adicionar window.confirm no botao de deletar *
+//tipar o data do banco de dados para date 
 //as transacoes precisam estar listadas pelas mais novas em questão de data
-//adicionar window.confirm no botao de deletar
 
 const $meuform = document.querySelector("#meu-form");
 
