@@ -1,8 +1,8 @@
 //botar input date *
 //data precisa voltar pro input date *
 //adicionar window.confirm no botao de deletar *
+//as transacoes precisam estar listadas pelas mais novas em questão de data *
 //tipar o data do banco de dados para date 
-//as transacoes precisam estar listadas pelas mais novas em questão de data
 
 const $meuform = document.querySelector("#meu-form");
 
@@ -56,7 +56,15 @@ $meuform.addEventListener("submit", async (e) => {
     // console.log(dataFormatada)
 
     const dados = await response.json();
-    transacoes.push(dados);
+
+    transacoes.unshift(dados);
+
+    transacoes.sort((a, b) => {
+      const dataA = new Date(b.data);
+      const dataB = new Date(a.data);
+      return dataA - dataB;
+    });
+
     carregarTransacoes();
 
   } else {
@@ -102,7 +110,6 @@ function carregarTransacoes() {
       style: 'currency',
       currency: 'BRL'
     });
-
 
     transacaoItem.innerHTML = `
       <td>${transacao.descricao}</td>
