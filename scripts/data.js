@@ -26,3 +26,9 @@
 //         return dataB - dataA;
 //     });
 // }
+
+transacoes.sort((a, b) => {
+    const dataA = new Date(b.data);
+    const dataB = new Date(a.data);
+    return dataA - dataB;
+});

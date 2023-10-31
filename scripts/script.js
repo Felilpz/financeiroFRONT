@@ -2,7 +2,8 @@
 //data precisa voltar pro input date *
 //adicionar window.confirm no botao de deletar *
 //as transacoes precisam estar listadas pelas mais novas em questão de data *
-//tipar o data do banco de dados para date 
+//tipar o data do banco de dados para date
+//remover array
 
 const $meuform = document.querySelector("#meu-form");
 
@@ -35,9 +36,11 @@ $meuform.addEventListener("submit", async (e) => {
     let data1 = document.querySelector('.data').value;
     let data = data1.split('-').reverse().join('/');
     return data;
+    console.log(data)
   }
 
   let dataFormatada = funcaoData();
+  console.log(dataFormatada)
 
   if (!editando) {
     const response = await fetch("http://127.0.0.1:5000/api/transacoes", {
@@ -58,12 +61,6 @@ $meuform.addEventListener("submit", async (e) => {
     const dados = await response.json();
 
     transacoes.unshift(dados);
-
-    transacoes.sort((a, b) => {
-      const dataA = new Date(b.data);
-      const dataB = new Date(a.data);
-      return dataA - dataB;
-    });
 
     carregarTransacoes();
 
@@ -91,11 +88,13 @@ $meuform.addEventListener("submit", async (e) => {
     editando = false;
     transacaoId = null;
   }
-  // location.reload();
-  $meuform.reset();
-  $proventos.value = '';
-  $gastos.value = '';
-  $saldo.value = '';
+
+  location.reload();
+
+  // $meuform.reset();
+  // $proventos.value = '';
+  // $gastos.value = '';
+  // $saldo.value = '';
 
 });
 
