@@ -3,7 +3,7 @@
 //adicionar window.confirm no botao de deletar *
 //as transacoes precisam estar listadas pelas mais novas em questão de data *
 //tipar o data do banco de dados para date
-//remover array
+//remover array (futuro)
 
 const $meuform = document.querySelector("#meu-form");
 
@@ -156,14 +156,12 @@ function carregarTransacoes() {
       $meuform["valor-name"].value = data.valor;
       $meuform["radio-name"].value = data.tipo;
 
-
       console.log(data.data);
 
       const dataTransacaoInput = document.getElementById("dataInput");
       const datinha = data.data.split('/').reverse().join('-');
 
       dataTransacaoInput.value = datinha;
-
 
       let type = $meuform["radio-name"].value;
       if ($meuform["radio-name"].value == "Entrada") {
