@@ -400,3 +400,29 @@ input[type="number"] {
 .inputs-radio {
   font-size: 14px;
 }
+
+
+/* finais? */
+#addonsPai {
+  position: fixed;
+  /* top: 0; */
+  bottom: 30px;
+  right: 0;
+  margin-bottom: 20px;
+  margin-right: 0px;
+}
+
+.addons {
+  display: flex;
+}
+
+.btns input[type="button"] {
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid whitesmoke;
+  padding: 7px;
+  text-transform: uppercase;
+  background-color: var(--color3);
+  color: var(--color5);
+  cursor: pointer;
+}
